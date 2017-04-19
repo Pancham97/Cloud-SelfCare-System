@@ -43,7 +43,7 @@ if(mysqli_num_rows($select_result) > 0) {
         // Basic query to send a welcome mail to the recipient.
         $to = "$email";
         $subject = "Welcome to Cloud Selfcare System!";
-        $txt = "Hello, $firstName! Greetings from the Cloud Selfcare System! Your account has been registered as a user in the CSC Club! Download the app from the link below." . "\r\n" . "https://github.com/Pancham97/Cloud-Selfcare-System" . "\r\n" . "Your details are as follows:" . "\r\n" . "Email: " . $email . "\r\n" . "Password: " . $password . "\r\n\r\n" . "Your registered phone number is: " . $phoneNumber . "\r\n" . "If you have not registered to CSC, kindly disregard this email.";
+        $txt = "Hello, $firstName! Greetings from the Cloud Selfcare System! Your account has been registered as a user in the CSC Club! Download the app from the link below." . "\r\n\n\n" . "https://github.com/Pancham97/Cloud-SelfCare-System/blob/master/Android/CSC/app/app-release.apk?raw=true" . "\r\n" . "Your details are as follows:" . "\r\n" . "Email: " . $email . "\r\n" . "Password: " . $password . "\r\n\r\n" . "Your registered phone number is: " . $phoneNumber . "\r\n\n\n" . "If you have not registered to CSC, kindly disregard this email.";
         $headers = "From: CSC" . "\r\n";
 
         mail($to,$subject,$txt,$headers);
