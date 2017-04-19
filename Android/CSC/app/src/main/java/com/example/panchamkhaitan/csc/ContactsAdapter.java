@@ -42,13 +42,13 @@ public class ContactsAdapter extends ArrayAdapter {
         View row;
         row = convertView;
         ContactHolder contactHolder;
-        if(row == null) {
+        if (row == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = layoutInflater.inflate(R.layout.row_layout, parent, false);
             contactHolder = new ContactHolder();
 
+            contactHolder.tx_parentName = (TextView) row.findViewById(R.id.parentName);
             contactHolder.tx_firstName = (TextView) row.findViewById(R.id.firstName);
-            contactHolder.tx_lastName = (TextView) row.findViewById(R.id.lastName);
             contactHolder.tx_email = (TextView) row.findViewById(R.id.email);
             contactHolder.tx_phoneNumber = (TextView) row.findViewById(R.id.phoneNumber);
             row.setTag(contactHolder);
@@ -57,14 +57,15 @@ public class ContactsAdapter extends ArrayAdapter {
         }
 
         Contacts contacts = (Contacts) this.getItem(position);
-        contactHolder.tx_firstName.setText(contacts.getFirstName());
-        contactHolder.tx_lastName.setText(contacts.getLastName());
-        contactHolder.tx_email.setText(contacts.getEmail());
-        contactHolder.tx_phoneNumber.setText(contacts.getPhoneNumber());
+        contactHolder.tx_parentName.setText("Hello, " + contacts.getFirstName() + "!");
+        contactHolder.tx_firstName.setText("Full Name: " + contacts.getFirstName() + contacts.getLastName());
+//        contactHolder.tx_lastName.setText(contacts.getLastName());
+        contactHolder.tx_email.setText("Email: " + contacts.getEmail());
+        contactHolder.tx_phoneNumber.setText("Phone Number: " + contacts.getPhoneNumber());
         return row;
     }
 
     static class ContactHolder {
-        TextView tx_firstName, tx_lastName, tx_email, tx_phoneNumber;
+        TextView tx_parentName, tx_firstName, tx_email, tx_phoneNumber;
     }
 }

@@ -43,6 +43,15 @@ public class LoginActivity extends AppCompatActivity {
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/abc.ttf");
         bt.setTypeface(font);
 
+        TextView signUpText = (TextView) findViewById(R.id.signUpText);
+        signUpText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
         u_email = (EditText) findViewById(R.id.email);
         u_password = (EditText) findViewById(R.id.password);
 
@@ -136,7 +145,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.v("Result user: ", parse_string);
                 Toast.makeText(context,  parse_string, Toast.LENGTH_SHORT).show();
 
-                if(!parse_string.equals("Email or password incorrect!")) {
+                if(! parse_string.equals("Email or password incorrect!")) {
                     Intent intent = new Intent(context, UserActivity.class);
                     intent.putExtra("data", parse_string);
                     Log.v("Parse String: ", parse_string);

@@ -18,7 +18,7 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin);
     }
 
-    public  void logout(View view){
+    public void logout(View view) {
         SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.clear();
@@ -32,4 +32,3 @@ public class AdminActivity extends AppCompatActivity {
     }
 
 }
-

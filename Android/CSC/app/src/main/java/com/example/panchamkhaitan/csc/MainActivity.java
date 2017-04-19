@@ -17,28 +17,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView tx = (TextView)findViewById(R.id.head);
+        TextView tx = (TextView) findViewById(R.id.head);
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/abc.ttf");
         tx.setTypeface(custom_font);
 
-        TextView bt = (TextView)findViewById(R.id.button);
+        TextView bt = (TextView) findViewById(R.id.button);
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/abc.ttf");
         bt.setTypeface(font);
 
         SharedPreferences sharedpreferences = getApplicationContext().getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-        String email = sharedpreferences.getString("emailKey",null);
-        String password = sharedpreferences.getString("passwordKey",null);
+        String email = sharedpreferences.getString("emailKey", null);
+        String password = sharedpreferences.getString("passwordKey", null);
 
-        if(email != null && password != null) {
+        if (email != null && password != null) {
             Log.v("MainActivity: ", "Exists");
-            if(email.equals("talktopancham@gmail.com")) {
+            if (email.equals("talktopancham@gmail.com")) {
                 Intent intent = new Intent(this, AdminActivity.class);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
-            }
-            else {
+            } else {
                 Intent intent = new Intent(this, UserActivity.class);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

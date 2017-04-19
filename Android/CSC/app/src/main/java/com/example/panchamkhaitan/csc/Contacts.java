@@ -4,9 +4,10 @@ package com.example.panchamkhaitan.csc;
  * Created by panchamkhaitan on 19/04/17.
  */
 public class Contacts {
-    private String firstName, lastName, email, phoneNumber;
+    private String parentName, firstName, lastName, email, phoneNumber;
 
-    public Contacts(String firstName, String lastName, String email, String phoneNumber) {
+    public Contacts(String parentName, String firstName, String lastName, String email, String phoneNumber) {
+        this.setParentName(parentName);
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setEmail(email);
@@ -43,5 +44,9 @@ public class Contacts {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
     }
 }
