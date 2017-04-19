@@ -67,6 +67,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:clickable="true"
+        android:textColor="#e74c3c"
         android:text="Not a member? Register Now!"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

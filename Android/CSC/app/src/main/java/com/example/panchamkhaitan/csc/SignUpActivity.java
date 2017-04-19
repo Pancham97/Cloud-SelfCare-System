@@ -21,7 +21,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     EditText e_firstName, e_lastName, e_email, e_password, e_repassword, e_phoneNumber;
     String firstName, lastName, email, password, repassword, phoneNumber;
-    Button signUpButton = (Button) findViewById(R.id.signUpButton);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,24 +35,6 @@ public class SignUpActivity extends AppCompatActivity {
         e_phoneNumber = (EditText) findViewById(R.id.phoneNumber);
 
     }
-
-//    // validating email id
-//    private boolean isValidEmail(String email) {
-//        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-//                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-//
-//        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-//        Matcher matcher = pattern.matcher(email);
-//        return matcher.matches();
-//    }
-//
-//    // validating password with retype password
-//    private boolean isValidPassword(String pass) {
-//        if (pass != null && pass.length() > 6) {
-//            return true;
-//        }
-//        return false;
-//    }
 
     public void registerStudent(View view) {
         firstName = e_firstName.getText().toString();

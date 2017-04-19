@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Add Student"
+        android:text="Sign Up"
         android:textSize="25sp" />
 
     <EditText
