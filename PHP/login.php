@@ -1,58 +1,69 @@
-<?php
-session_start();
-$host = "localhost";
-$database = "id583441_selfcare";
-$user = "id583441_root";
-$password = "password";
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Welcome to the Cloud Selfcare System!</title>
 
-// Connection to the database
-$connected = mysqli_connect($host, $user, $password, $database) or die(mysql_error());
-
-// Taking values from the login form
-$email = $_POST['email'];
-$password = $_POST['password'];
-
-// Query for verifying if the user is in the database
-$sql_query = "select * from users where email like '$email' and password like (PASSWORD('" . $password . "'));";
-$email_query = "select * from users where email like '$email';";
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/universal.css">
+    <link rel="stylesheet" href="css/login.css">
 
 
-$mysqli_result = mysqli_query($connected, $sql_query);
-$email_result = mysqli_query($connected, $email_query);
 
-// Executing the query
-$row_cnt = mysqli_num_rows($mysqli_result);
-$email_row_cnt = mysqli_num_rows($email_result);
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-// If no email found in the database
-if($email_row_cnt == 0) {
-    echo "No user registered with this email ID! Try Again!";
-} else {
-    // If email found, but password not found
-    if($row_cnt == 0) {
-        echo "Email or password incorrect!";
-    } else {
-        // If everything is all right.
-        while($row = mysqli_fetch_array($mysqli_result)) {
-            // Session is added just for fun. // TODO: To be removed later
-            $_SESSION['email'] = $row['email'];
+    <head>
+        <title>Login to CSC</title>
+    </head>
+    <body>
 
-            // Check if email belongs to a doctor.
-            if($row['email'] == "talktopancham@gmail.com") {
-                echo "Hello doctor!";
-            } else {
-                // If belongs to a normal user.
-                $query = "select * from users where email like '$email'";
-                $result = mysqli_query($connected, $query);
-                $response = array();
+        <?php
+          include 'navbar.php';
+        ?>
 
-                while($row = mysqli_fetch_array($result, MYSQLI_BOTH)) {
-                    // JSON query to push the results in array.
-                    array_push($response, array("firstName"=>$row[0], "lastName"=>$row[1], "email"=>$row[2], "phone"=>$row[4]));
-                    echo json_encode(array("users"=>$response));
-                }
-            }
-        }
-    }
-}
-?>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-4"></div>
+                    <div class="col-md-4 form">
+                        <h2>Login to CSC!</h2><br>
+                        <!-- Login form begins -->
+                        <form action="confirmLogin.php" method="post">
+                            <label for="email" class="sr-only">Email address</label>
+                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
+
+                            <label for="password" class="sr-only">Password</label>
+                            <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+
+<!--
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="remember-me"> Remember me
+                                </label>
+                            </div>
+-->
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                            <a href="#" style="float: right">Forgot password?</a><br><br>
+                        </form>
+                        <!-- Login form ends -->
+                    </div>
+                </div>
+            </div>
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+.navbar-brand img {
+    width: 20px;
+}
+
+.navbar-brand img, .navbar-brand span {
+    display: inline-block;
+}
