@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.panchamkhaitan.csc.SplashScreenActivity">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/splash"
+        android:layout_marginTop="119dp"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cloud Selfcare System"
+        android:textSize="40sp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:padding="15dp"
+        android:textColor="#000"
+        android:id="@+id/splashTitle" />
+
+</RelativeLayout>
