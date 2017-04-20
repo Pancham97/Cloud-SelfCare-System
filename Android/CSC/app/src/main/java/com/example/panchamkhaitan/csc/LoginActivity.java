@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         public SignInActivity(Context context) {
             this.context = context;
         }
-        String link = "https://svfitnessclub.000webhostapp.com/selfcare/login.php";
+        String link = "https://svfitnessclub.000webhostapp.com/selfcare/confirmLogin.php";
 
         @Override
         protected String doInBackground(String... arg0) {

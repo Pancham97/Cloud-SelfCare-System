@@ -60,7 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            String reg_url = "https://svfitnessclub.000webhostapp.com/selfcare/signup.php";
+            String reg_url = "https://svfitnessclub.000webhostapp.com/selfcare/register.php";
             String method = params[0];
 
             if (method.equals("register")) {
