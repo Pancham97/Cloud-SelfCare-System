@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,8 @@ import java.net.URLEncoder;
 
 public class LoginActivity extends AppCompatActivity {
 
+    ProgressBar progressBar;
+    Button loginButton;
     String parse_string;
     private EditText u_email, u_password;
     public static final String MyPREFERENCES = "MyPrefs";
@@ -34,6 +38,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        loginButton = (Button) findViewById(R.id.login);
 
         TextView tx = (TextView)findViewById(R.id.login_heading);
         Typeface head_font = Typeface.createFromAsset(getAssets(), "fonts/abc.ttf");
@@ -82,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         String link = "https://svfitnessclub.000webhostapp.com/selfcare/confirmLogin.php";
 
+
         @Override
         protected String doInBackground(String... arg0) {
             try {
@@ -129,6 +137,10 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
+
+            progressBar.setVisibility(View.GONE);
+            loginButton.setEnabled(true);
+
             Log.v("First result: ", result);
             Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
             String adminStr = "Hello doctor!";
@@ -157,6 +169,8 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
+            loginButton.setEnabled(false);
             super.onPreExecute();
         }
     }
